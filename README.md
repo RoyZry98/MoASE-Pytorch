@@ -21,11 +21,7 @@ Our source model is from timm, you can directly donwload it from the code.
 Please load the source model from [here](https://drive.google.com/file/d/1pAoz4Wwos74DjWPQ5d-6ntyjQkmp9FPE/view?usp=sharing)
 
 ```bash
-cd cifar
-bash ./bash/cifar10/source.sh # Source model directly test on target domain
-bash ./bash/cifar10/tent.sh # Tent 
-bash ./bash/cifar10/cotta.sh # CoTTA
-bash ./bash/cifar10/vit.sh # MoASE
+bash run_cifar10.sh # MoASE
 ```
 
 ### Cifar100-to-Cifar100C task 
@@ -33,10 +29,7 @@ Please load the source model from [here](https://drive.google.com/file/d/1yRekkp
 
 ```bash
 cd cifar
-bash ./bash/cifar100/source.sh # Source model directly test on target domain
-bash ./bash/cifar100/tent.sh # Tent 
-bash ./bash/cifar100/cotta.sh # CoTTA
-bash ./bash/cifar100/vit.sh # MoASE
+bash run_cifar100.sh # MoASE
 ```
 
 For segmentation code, you can refer to [cotta](https://github.com/qinenergy/cotta) and [SVDP](https://github.com/Anonymous-012/SVDP). As for the source model, you can directly use Segformer trained on Cityscapes.
