@@ -1,0 +1,736 @@
+[24/05/11 23:59:34] [conf.py:  216]: PyTorch Version: torch=1.10.0, cuda=11.3, cudnn=8200
+[24/05/11 23:59:34] [conf.py:  218]: BN:
+  EPS: 1e-05
+  MOM: 0.1
+CKPT_DIR: ./ckpt
+CORRUPTION:
+  DATASET: cifar100
+  NUM_EX: 10000
+  SEVERITY: [5]
+  TYPE: ['gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 'glass_blur', 'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog', 'brightness', 'contrast', 'elastic_transform', 'pixelate', 'jpeg_compression']
+CUDNN:
+  BENCHMARK: True
+DATA_DIR: /data/home/zhangrongyu/code/cotta/cifar/data
+DESC: 
+LOG_DEST: vit_240511_235934.txt
+LOG_TIME: 240511_235934
+MODEL:
+  ADAPTATION: cotta
+  ARCH: Standard_VITB
+  EPISODIC: False
+OPTIM:
+  AP: 0.92
+  BETA: 0.9
+  DAMPENING: 0.0
+  LR: 0.0001
+  METHOD: Adam
+  MOMENTUM: 0.9
+  MT: 0.999
+  NESTEROV: True
+  RST: 0.01
+  STEPS: 1
+  WD: 0.0
+RNG_SEED: 1
+SAVE_DIR: ./output
+TEST:
+  BATCH_SIZE: 20
+[24/05/11 23:59:41] [cifar100c_vit.py:   59]: test-time adaptation: CoTTA
+[24/05/11 23:59:41] [cifar100c_vit.py:  158]: model for adaptation: DataParallel(
+  (module): VisionTransformer(
+    (patch_embed): PatchEmbed(
+      (proj): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16))
+      (norm): Identity()
+    )
+    (pos_drop): Dropout(p=0.0, inplace=False)
+    (blocks): Sequential(
+      (0): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (4): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (5): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (6): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (7): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (8): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (9): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (10): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (11): Block(
+        (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=768, out_features=2304, bias=True)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=768, out_features=768, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (adapter): Cotta_Adapter(
+          (router): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (router_2): Sequential(
+            (0): Linear(in_features=768, out_features=4, bias=True)
+            (1): KeepTopK()
+            (2): Softmax(dim=-1)
+          )
+          (adaptmlp): ModuleList(
+            (0): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (1): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (2): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+            (3): Adapter(
+              (down_proj): Linear(in_features=768, out_features=192, bias=True)
+              (non_linear_func): ReLU()
+              (up_proj): Linear(in_features=192, out_features=768, bias=True)
+              (ourdropout): BiasedDropout()
+            )
+          )
+          (biaseddrop): BiasedDropout()
+        )
+        (mlp): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+    (pre_logits): Identity()
+    (head): Linear(in_features=768, out_features=100, bias=True)
+  )
+)
+[24/05/11 23:59:41] [cifar100c_vit.py:  159]: params for adaptation: ['module.patch_embed.proj.weight', 'module.patch_embed.proj.bias', 'module.blocks.0.norm1.weight', 'module.blocks.0.norm1.bias', 'module.blocks.0.attn.qkv.weight', 'module.blocks.0.attn.qkv.bias', 'module.blocks.0.attn.proj.weight', 'module.blocks.0.attn.proj.bias', 'module.blocks.0.norm2.weight', 'module.blocks.0.norm2.bias', 'module.blocks.0.adapter.router.0.weight', 'module.blocks.0.adapter.router.0.bias', 'module.blocks.0.adapter.router_2.0.weight', 'module.blocks.0.adapter.router_2.0.bias', 'module.blocks.0.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.0.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.0.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.0.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.0.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.0.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.0.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.0.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.0.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.0.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.0.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.0.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.0.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.0.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.0.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.0.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.0.mlp.fc1.weight', 'module.blocks.0.mlp.fc1.bias', 'module.blocks.0.mlp.fc2.weight', 'module.blocks.0.mlp.fc2.bias', 'module.blocks.1.norm1.weight', 'module.blocks.1.norm1.bias', 'module.blocks.1.attn.qkv.weight', 'module.blocks.1.attn.qkv.bias', 'module.blocks.1.attn.proj.weight', 'module.blocks.1.attn.proj.bias', 'module.blocks.1.norm2.weight', 'module.blocks.1.norm2.bias', 'module.blocks.1.adapter.router.0.weight', 'module.blocks.1.adapter.router.0.bias', 'module.blocks.1.adapter.router_2.0.weight', 'module.blocks.1.adapter.router_2.0.bias', 'module.blocks.1.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.1.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.1.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.1.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.1.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.1.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.1.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.1.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.1.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.1.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.1.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.1.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.1.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.1.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.1.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.1.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.1.mlp.fc1.weight', 'module.blocks.1.mlp.fc1.bias', 'module.blocks.1.mlp.fc2.weight', 'module.blocks.1.mlp.fc2.bias', 'module.blocks.2.norm1.weight', 'module.blocks.2.norm1.bias', 'module.blocks.2.attn.qkv.weight', 'module.blocks.2.attn.qkv.bias', 'module.blocks.2.attn.proj.weight', 'module.blocks.2.attn.proj.bias', 'module.blocks.2.norm2.weight', 'module.blocks.2.norm2.bias', 'module.blocks.2.adapter.router.0.weight', 'module.blocks.2.adapter.router.0.bias', 'module.blocks.2.adapter.router_2.0.weight', 'module.blocks.2.adapter.router_2.0.bias', 'module.blocks.2.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.2.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.2.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.2.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.2.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.2.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.2.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.2.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.2.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.2.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.2.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.2.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.2.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.2.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.2.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.2.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.2.mlp.fc1.weight', 'module.blocks.2.mlp.fc1.bias', 'module.blocks.2.mlp.fc2.weight', 'module.blocks.2.mlp.fc2.bias', 'module.blocks.3.norm1.weight', 'module.blocks.3.norm1.bias', 'module.blocks.3.attn.qkv.weight', 'module.blocks.3.attn.qkv.bias', 'module.blocks.3.attn.proj.weight', 'module.blocks.3.attn.proj.bias', 'module.blocks.3.norm2.weight', 'module.blocks.3.norm2.bias', 'module.blocks.3.adapter.router.0.weight', 'module.blocks.3.adapter.router.0.bias', 'module.blocks.3.adapter.router_2.0.weight', 'module.blocks.3.adapter.router_2.0.bias', 'module.blocks.3.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.3.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.3.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.3.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.3.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.3.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.3.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.3.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.3.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.3.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.3.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.3.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.3.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.3.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.3.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.3.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.3.mlp.fc1.weight', 'module.blocks.3.mlp.fc1.bias', 'module.blocks.3.mlp.fc2.weight', 'module.blocks.3.mlp.fc2.bias', 'module.blocks.4.norm1.weight', 'module.blocks.4.norm1.bias', 'module.blocks.4.attn.qkv.weight', 'module.blocks.4.attn.qkv.bias', 'module.blocks.4.attn.proj.weight', 'module.blocks.4.attn.proj.bias', 'module.blocks.4.norm2.weight', 'module.blocks.4.norm2.bias', 'module.blocks.4.adapter.router.0.weight', 'module.blocks.4.adapter.router.0.bias', 'module.blocks.4.adapter.router_2.0.weight', 'module.blocks.4.adapter.router_2.0.bias', 'module.blocks.4.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.4.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.4.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.4.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.4.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.4.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.4.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.4.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.4.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.4.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.4.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.4.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.4.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.4.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.4.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.4.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.4.mlp.fc1.weight', 'module.blocks.4.mlp.fc1.bias', 'module.blocks.4.mlp.fc2.weight', 'module.blocks.4.mlp.fc2.bias', 'module.blocks.5.norm1.weight', 'module.blocks.5.norm1.bias', 'module.blocks.5.attn.qkv.weight', 'module.blocks.5.attn.qkv.bias', 'module.blocks.5.attn.proj.weight', 'module.blocks.5.attn.proj.bias', 'module.blocks.5.norm2.weight', 'module.blocks.5.norm2.bias', 'module.blocks.5.adapter.router.0.weight', 'module.blocks.5.adapter.router.0.bias', 'module.blocks.5.adapter.router_2.0.weight', 'module.blocks.5.adapter.router_2.0.bias', 'module.blocks.5.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.5.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.5.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.5.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.5.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.5.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.5.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.5.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.5.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.5.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.5.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.5.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.5.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.5.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.5.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.5.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.5.mlp.fc1.weight', 'module.blocks.5.mlp.fc1.bias', 'module.blocks.5.mlp.fc2.weight', 'module.blocks.5.mlp.fc2.bias', 'module.blocks.6.norm1.weight', 'module.blocks.6.norm1.bias', 'module.blocks.6.attn.qkv.weight', 'module.blocks.6.attn.qkv.bias', 'module.blocks.6.attn.proj.weight', 'module.blocks.6.attn.proj.bias', 'module.blocks.6.norm2.weight', 'module.blocks.6.norm2.bias', 'module.blocks.6.adapter.router.0.weight', 'module.blocks.6.adapter.router.0.bias', 'module.blocks.6.adapter.router_2.0.weight', 'module.blocks.6.adapter.router_2.0.bias', 'module.blocks.6.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.6.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.6.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.6.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.6.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.6.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.6.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.6.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.6.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.6.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.6.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.6.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.6.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.6.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.6.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.6.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.6.mlp.fc1.weight', 'module.blocks.6.mlp.fc1.bias', 'module.blocks.6.mlp.fc2.weight', 'module.blocks.6.mlp.fc2.bias', 'module.blocks.7.norm1.weight', 'module.blocks.7.norm1.bias', 'module.blocks.7.attn.qkv.weight', 'module.blocks.7.attn.qkv.bias', 'module.blocks.7.attn.proj.weight', 'module.blocks.7.attn.proj.bias', 'module.blocks.7.norm2.weight', 'module.blocks.7.norm2.bias', 'module.blocks.7.adapter.router.0.weight', 'module.blocks.7.adapter.router.0.bias', 'module.blocks.7.adapter.router_2.0.weight', 'module.blocks.7.adapter.router_2.0.bias', 'module.blocks.7.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.7.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.7.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.7.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.7.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.7.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.7.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.7.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.7.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.7.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.7.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.7.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.7.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.7.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.7.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.7.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.7.mlp.fc1.weight', 'module.blocks.7.mlp.fc1.bias', 'module.blocks.7.mlp.fc2.weight', 'module.blocks.7.mlp.fc2.bias', 'module.blocks.8.norm1.weight', 'module.blocks.8.norm1.bias', 'module.blocks.8.attn.qkv.weight', 'module.blocks.8.attn.qkv.bias', 'module.blocks.8.attn.proj.weight', 'module.blocks.8.attn.proj.bias', 'module.blocks.8.norm2.weight', 'module.blocks.8.norm2.bias', 'module.blocks.8.adapter.router.0.weight', 'module.blocks.8.adapter.router.0.bias', 'module.blocks.8.adapter.router_2.0.weight', 'module.blocks.8.adapter.router_2.0.bias', 'module.blocks.8.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.8.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.8.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.8.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.8.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.8.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.8.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.8.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.8.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.8.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.8.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.8.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.8.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.8.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.8.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.8.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.8.mlp.fc1.weight', 'module.blocks.8.mlp.fc1.bias', 'module.blocks.8.mlp.fc2.weight', 'module.blocks.8.mlp.fc2.bias', 'module.blocks.9.norm1.weight', 'module.blocks.9.norm1.bias', 'module.blocks.9.attn.qkv.weight', 'module.blocks.9.attn.qkv.bias', 'module.blocks.9.attn.proj.weight', 'module.blocks.9.attn.proj.bias', 'module.blocks.9.norm2.weight', 'module.blocks.9.norm2.bias', 'module.blocks.9.adapter.router.0.weight', 'module.blocks.9.adapter.router.0.bias', 'module.blocks.9.adapter.router_2.0.weight', 'module.blocks.9.adapter.router_2.0.bias', 'module.blocks.9.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.9.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.9.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.9.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.9.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.9.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.9.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.9.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.9.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.9.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.9.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.9.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.9.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.9.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.9.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.9.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.9.mlp.fc1.weight', 'module.blocks.9.mlp.fc1.bias', 'module.blocks.9.mlp.fc2.weight', 'module.blocks.9.mlp.fc2.bias', 'module.blocks.10.norm1.weight', 'module.blocks.10.norm1.bias', 'module.blocks.10.attn.qkv.weight', 'module.blocks.10.attn.qkv.bias', 'module.blocks.10.attn.proj.weight', 'module.blocks.10.attn.proj.bias', 'module.blocks.10.norm2.weight', 'module.blocks.10.norm2.bias', 'module.blocks.10.adapter.router.0.weight', 'module.blocks.10.adapter.router.0.bias', 'module.blocks.10.adapter.router_2.0.weight', 'module.blocks.10.adapter.router_2.0.bias', 'module.blocks.10.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.10.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.10.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.10.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.10.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.10.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.10.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.10.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.10.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.10.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.10.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.10.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.10.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.10.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.10.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.10.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.10.mlp.fc1.weight', 'module.blocks.10.mlp.fc1.bias', 'module.blocks.10.mlp.fc2.weight', 'module.blocks.10.mlp.fc2.bias', 'module.blocks.11.norm1.weight', 'module.blocks.11.norm1.bias', 'module.blocks.11.attn.qkv.weight', 'module.blocks.11.attn.qkv.bias', 'module.blocks.11.attn.proj.weight', 'module.blocks.11.attn.proj.bias', 'module.blocks.11.norm2.weight', 'module.blocks.11.norm2.bias', 'module.blocks.11.adapter.router.0.weight', 'module.blocks.11.adapter.router.0.bias', 'module.blocks.11.adapter.router_2.0.weight', 'module.blocks.11.adapter.router_2.0.bias', 'module.blocks.11.adapter.adaptmlp.0.down_proj.weight', 'module.blocks.11.adapter.adaptmlp.0.down_proj.bias', 'module.blocks.11.adapter.adaptmlp.0.up_proj.weight', 'module.blocks.11.adapter.adaptmlp.0.up_proj.bias', 'module.blocks.11.adapter.adaptmlp.1.down_proj.weight', 'module.blocks.11.adapter.adaptmlp.1.down_proj.bias', 'module.blocks.11.adapter.adaptmlp.1.up_proj.weight', 'module.blocks.11.adapter.adaptmlp.1.up_proj.bias', 'module.blocks.11.adapter.adaptmlp.2.down_proj.weight', 'module.blocks.11.adapter.adaptmlp.2.down_proj.bias', 'module.blocks.11.adapter.adaptmlp.2.up_proj.weight', 'module.blocks.11.adapter.adaptmlp.2.up_proj.bias', 'module.blocks.11.adapter.adaptmlp.3.down_proj.weight', 'module.blocks.11.adapter.adaptmlp.3.down_proj.bias', 'module.blocks.11.adapter.adaptmlp.3.up_proj.weight', 'module.blocks.11.adapter.adaptmlp.3.up_proj.bias', 'module.blocks.11.mlp.fc1.weight', 'module.blocks.11.mlp.fc1.bias', 'module.blocks.11.mlp.fc2.weight', 'module.blocks.11.mlp.fc2.bias', 'module.norm.weight', 'module.norm.bias', 'module.head.weight', 'module.head.bias']
+[24/05/11 23:59:41] [cifar100c_vit.py:  160]: optimizer for adaptation: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.0001
+    weight_decay: 0.0
+)
+[24/05/11 23:59:41] [cifar100c_vit.py:   66]: 当前进程 ID 是: 28045
+[24/05/11 23:59:41] [cifar100c_vit.py:   72]: resetting model
+[24/05/12 00:10:11] [cifar100c_vit.py:   91]: error % [gaussian_noise5]: 40.19%
+[24/05/12 00:10:11] [cifar100c_vit.py:   76]: not resetting model

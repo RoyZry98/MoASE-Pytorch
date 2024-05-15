@@ -1,0 +1,36 @@
+[24/05/13 22:34:01] [conf.py:  216]: PyTorch Version: torch=1.10.0, cuda=11.3, cudnn=8200
+[24/05/13 22:34:01] [conf.py:  218]: BN:
+  EPS: 1e-05
+  MOM: 0.1
+CKPT_DIR: ./ckpt
+CORRUPTION:
+  DATASET: cifar10
+  NUM_EX: 10000
+  SEVERITY: [5]
+  TYPE: ['gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 'glass_blur', 'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog', 'brightness', 'contrast', 'elastic_transform', 'pixelate', 'jpeg_compression']
+CUDNN:
+  BENCHMARK: True
+DATA_DIR: /data/home/zhangrongyu/code/cotta/cifar/data
+DESC: 
+LOG_DEST: vit_240513_223401.txt
+LOG_TIME: 240513_223401
+MODEL:
+  ADAPTATION: cotta
+  ARCH: Standard_VITB
+  EPISODIC: False
+OPTIM:
+  AP: 0.92
+  BETA: 0.9
+  DAMPENING: 0.0
+  LR: 0.0001
+  METHOD: Adam
+  MOMENTUM: 0.9
+  MT: 0.999
+  NESTEROV: True
+  RST: 0.01
+  STEPS: 1
+  WD: 0.0
+RNG_SEED: 1
+SAVE_DIR: ./output
+TEST:
+  BATCH_SIZE: 40
