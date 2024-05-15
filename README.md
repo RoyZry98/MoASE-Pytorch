@@ -1,4 +1,4 @@
-# Decomposing the Neurons: \\Activation Sparsity via Mixture of Experts for Continual Test Time Adaptation
+# Decomposing the Neurons: Activation Sparsity via Mixture of Experts for Continual Test Time Adaptation
 
 ## Installation
 
