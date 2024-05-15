@@ -22,7 +22,7 @@ Please load the source model from [here](https://drive.google.com/file/d/1pAoz4W
 
 ```bash
 cd cifar
-bash ./bash/cifar10/source_vit.sh # Source model directly test on target domain
+bash ./bash/cifar10/source.sh # Source model directly test on target domain
 bash ./bash/cifar10/tent.sh # Tent 
 bash ./bash/cifar10/cotta.sh # CoTTA
 bash ./bash/cifar10/vit.sh # MoASE
@@ -33,7 +33,7 @@ Please load the source model from [here](https://drive.google.com/file/d/1yRekkp
 
 ```bash
 cd cifar
-bash ./bash/cifar100/source_vit.sh # Source model directly test on target domain
+bash ./bash/cifar100/source.sh # Source model directly test on target domain
 bash ./bash/cifar100/tent.sh # Tent 
 bash ./bash/cifar100/cotta.sh # CoTTA
 bash ./bash/cifar100/vit.sh # MoASE
