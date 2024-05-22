@@ -251,12 +251,12 @@ common_corruptions = OrderedDict([
       'gdrive_id': '1ocnHbvDdOBLvgNr6K7vEYL08hUdkD1Rv'
     }),
     # ('Standard_VITB', {
-    #         'model': lambda: timm.create_model("vit_base_patch16_224", pretrained=False,checkpoint_path="/data/home/zhangrongyu/code/cotta/acdc-seg/pretrained/vit_base_patch16_224.augreg2_in21k_ft_in1k.pth"),
+    #         'model': lambda: timm.create_model("vit_base_patch16_224", pretrained=False,checkpoint_path="vit_base_patch16_224.augreg2_in21k_ft_in1k.pth"),
     #         'gdrive_id': '',
     #         'preprocessing': 'Res256Crop224'
     # }),
     ('Standard_VITB', {
-            'model': lambda: timm.create_model("vit_base_patch16_384", pretrained=False,checkpoint_path="/data/home/zhangrongyu/code/vida/cifar/pretrained/vit_base_16_384_imagenet1k_pre_cifar100.t7"),
+            'model': lambda: timm.create_model("vit_base_patch16_384", pretrained=False,checkpoint_path="vit_base_16_384_imagenet1k_pre_cifar100.t7"),
             'gdrive_id': '',
             'preprocessing': 'Res256Crop224'
         }),
