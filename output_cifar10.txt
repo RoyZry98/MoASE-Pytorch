@@ -11,7 +11,7 @@ CORRUPTION:
   TYPE: ['gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 'glass_blur', 'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog', 'brightness', 'contrast', 'elastic_transform', 'pixelate', 'jpeg_compression']
 CUDNN:
   BENCHMARK: True
-DATA_DIR: /data/home/zhangrongyu/code/cotta/cifar/data
+DATA_DIR: you/path/to/data
 DESC: 
 LOG_DEST: vit_240513_223401.txt
 LOG_TIME: 240513_223401
