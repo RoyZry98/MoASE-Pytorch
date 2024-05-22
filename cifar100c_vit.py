@@ -31,7 +31,7 @@ def evaluate(description):
 
     base_model = timm.create_model("vit_base_patch16_384", pretrained=False)
     base_model.head = nn.Linear(base_model.head.in_features, 100)
-    path = "/data/home/zhangrongyu/code/vida/cifar/pretrained/pretrain_cifar100.t7"
+    path = "pretrain_cifar100.t7"
     base_model = nn.DataParallel(base_model) # make parallel
     checkpoint = torch.load(path)
     base_model.load_state_dict(checkpoint['model'], strict=False)
