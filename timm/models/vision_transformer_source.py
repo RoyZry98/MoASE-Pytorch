@@ -347,9 +347,9 @@ class VisionTransformer(nn.Module):
         x = self.forward_features(x)
         # if counter<10000:
         import os
-        if not os.path.exists(f"/data/home/zhangrongyu/code/cotta/cifar100/visualization/kl_distance/baseline"):
-            os.makedirs(f"/data/home/zhangrongyu/code/cotta/cifar100/visualization/kl_distance/baseline")
-        torch.save(x[0],f"/data/home/zhangrongyu/code/cotta/cifar100/visualization/kl_distance/baseline/{corruption_type}_{counter}.pth")
+        if not os.path.exists(f"/data/home/xx/code/cotta/cifar100/visualization/kl_distance/baseline"):
+            os.makedirs(f"/data/home/xx/code/cotta/cifar100/visualization/kl_distance/baseline")
+        torch.save(x[0],f"/data/home/xx/code/cotta/cifar100/visualization/kl_distance/baseline/{corruption_type}_{counter}.pth")
         if self.head_dist is not None:
             x, x_dist = self.head(x[0]), self.head_dist(x[1])  # x must be a tuple
             if self.training and not torch.jit.is_scripting():
