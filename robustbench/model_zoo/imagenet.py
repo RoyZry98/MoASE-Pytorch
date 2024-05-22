@@ -82,7 +82,7 @@ common_corruptions = OrderedDict(
             'preprocessing': 'Res256Crop224'
         }),
         ('Standard_VITB', {
-            'model': lambda: timm.create_model("vit_base_patch16_224", pretrained=False,checkpoint_path="/data/home/zhangrongyu/code/cotta/acdc-seg/pretrained/vit_base_patch16_224.augreg2_in21k_ft_in1k.pth"),
+            'model': lambda: timm.create_model("vit_base_patch16_224", pretrained=False,checkpoint_path="vit_base_patch16_224.augreg2_in21k_ft_in1k.pth"),
             'gdrive_id': '',
             'preprocessing': 'Res256Crop224'
         }),
