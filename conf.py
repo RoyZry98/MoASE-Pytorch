@@ -119,7 +119,7 @@ _C.RNG_SEED = 1
 _C.SAVE_DIR = "./output"
 
 # Data directory
-_C.DATA_DIR = "/data/home/zhangrongyu/code/cotta/cifar/data"
+_C.DATA_DIR = "you/path/to/data"
 
 # Weight directory
 _C.CKPT_DIR = "./ckpt"
@@ -177,7 +177,7 @@ def load_cfg_fom_args(description="Config options."):
     parser.add_argument("--cfg", dest="cfg_file", type=str, required=True,
                         help="Config file location")
     parser.add_argument("--size", default=384, type=int)
-    parser.add_argument("--path", default="/data/home/zhangrongyu/code/cotta/acdc-seg/pretrained/vit_base_patch16_224.augreg2_in21k_ft_in1k.pth", type=str)
+    parser.add_argument("--path", default="vit_base_patch16_224.augreg2_in21k_ft_in1k.pth", type=str)
     parser.add_argument("opts", default=None, nargs=argparse.REMAINDER,
                         help="See conf.py for all options")
 
