@@ -1,6 +1,8 @@
 # Decomposing the Neurons: Activation Sparsity via Mixture of Experts for Continual Test Time Adaptation
 
-Rongyu Zhang, Aosong Cheng*, Yulin Luo*, Gaole Dai, Huanrui Yang, Jiaming Liu, Ran Xu, Li Du, Yuan Du, Yanbing Jiang, Shanghang Zhang [**Arxiv**](https://arxiv.org/abs/2306.04344)
+Rongyu Zhang, Aosong Cheng*, Yulin Luo*, Gaole Dai, Huanrui Yang, Jiaming Liu, Ran Xu, Li Du, Yuan Du, Yanbing Jiang, Shanghang Zhang 
+
+[**[Arxiv]**](https://arxiv.org/abs/2306.04344)
 
 <img src="MoASE.png"/>
 
