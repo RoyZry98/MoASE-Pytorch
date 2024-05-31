@@ -2,7 +2,7 @@
 
 Rongyu Zhang, Aosong Cheng*, Yulin Luo*, Gaole Dai, Huanrui Yang, Jiaming Liu, Ran Xu, Li Du, Yuan Du, Yanbing Jiang, Shanghang Zhang 
 
-[**[Arxiv]**](https://arxiv.org/abs/2306.04344)
+[**[Arxiv]**](https://arxiv.org/pdf/2405.16486)
 
 <img src="MoASE.png"/>
 
