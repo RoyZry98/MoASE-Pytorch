@@ -48,7 +48,12 @@ For segmentation code, you can refer to [cotta](https://github.com/qinenergy/cot
 ## Citation
 Please cite our work if you find it useful.
 ```bibtex
-
+@article{zhang2024decomposing,
+  title={Decomposing the Neurons: Activation Sparsity via Mixture of Experts for Continual Test Time Adaptation},
+  author={Zhang, Rongyu and Cheng, Aosong and Luo, Yulin and Dai, Gaole and Yang, Huanrui and Liu, Jiaming and Xu, Ran and Du, Li and Du, Yuan and Jiang, Yanbing and others},
+  journal={arXiv preprint arXiv:2405.16486},
+  year={2024}
+}
 ```
 
 ## Acknowledgement 
