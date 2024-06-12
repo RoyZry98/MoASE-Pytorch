@@ -45,6 +45,7 @@ bash run_cifar100.sh # MoASE
 ```
 
 For segmentation code, you can refer to [cotta](https://github.com/qinenergy/cotta) and [SVDP](https://github.com/Anonymous-012/SVDP). As for the source model, you can directly use Segformer trained on Cityscapes.
+
 ## Citation
 Please cite our work if you find it useful.
 ```bibtex
