@@ -1,7 +1,4 @@
 # Decomposing the Neurons: Activation Sparsity via Mixture of Experts for Continual Test Time Adaptation
-
-Rongyu Zhang, Aosong Cheng*, Yulin Luo*, Gaole Dai, Huanrui Yang, Jiaming Liu, Ran Xu, Li Du, Yuan Du, Yanbing Jiang, Shanghang Zhang 
-
 ![Python 3.9](https://img.shields.io/badge/Python-3.9-blue)
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2405.16486)
 
