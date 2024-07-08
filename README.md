@@ -1,5 +1,5 @@
 # Decomposing the Neurons: Activation Sparsity via Mixture of Experts for Continual Test Time Adaptation
-![Python 3.9](https://img.shields.io/badge/Python-3.9-blue)
+![Python 3.9](https://img.shields.io/badge/Python-3.9-red)
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2405.16486)
 
 <img src="MoASE.png"/>
