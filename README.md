@@ -1,3 +1,18 @@
+# MoASE++: Mixture of Activation Sparsity Experts with Domain-Adaptive On-policy Distillation for Continual Test Time Adaptation
+![Python 3.9](https://img.shields.io/badge/Python-3.9-red)
+[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2405.16486)
+
+## News!
+The extension version of MoASE is now released!
+
+<img src="MoASE++.png"/>
+
+* __For training MoASE++ model__: 
+```
+import cotta_vit as cotta -> import cotta_vit_opd as cotta
+```
+in cifar10c_vit.py and cifar100c_vit.py
+
 # Decomposing the Neurons: Activation Sparsity via Mixture of Experts for Continual Test Time Adaptation
 ![Python 3.9](https://img.shields.io/badge/Python-3.9-red)
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2405.16486)
