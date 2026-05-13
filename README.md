@@ -5,7 +5,7 @@
 ## News!
 The extension version of MoASE is now released!
 
-<img src="MoASE++.png"/>
+<img src="moase++.png"/>
 
 * __For training MoASE++ model__: 
 ```
